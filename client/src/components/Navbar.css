@@ -1,0 +1,31 @@
+.Navbar {
+    border: 1px solid #ccc;
+}
+
+.Navbar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.Navbar li {
+    display: inline-block;
+    margin: 0 5px;
+}
+
+.Navbar a {
+    padding: 10px;
+}
+
+/* 'active' class automatically added by React Router */
+.Navbar a.active {
+    background-color: #ccc;
+}
+.bg-light{
+    background-color: #3d4beb!important;
+    
+}
+
+
+.navbar-light .navbar-nav .nav-link {
+    color: white!important;
+}
