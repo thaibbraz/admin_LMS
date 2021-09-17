@@ -1,8 +1,12 @@
 import React from 'react';
 import '../App.css';
+import { useHistory } from 'react-router-dom';
 
-function LinkApp(props) {
-
+function Students(props) {
+  const history = useHistory();
+ function profile(){
+    history.push('/students/student_id=1');
+ }
     return (
       <div class="container">
         <div class="row">
@@ -21,7 +25,7 @@ function LinkApp(props) {
            <th scope="col">{filteredStudents.id}</th>
           <td>{filteredStudents.name}</td>
           <td>{filteredStudents.surname}</td> 
-          <td><button type="button" className="btn btn-warning btn-sm">Edit</button><button type="button" className="btn btn-danger btn-sm">Delete</button></td> 
+          <td><button type="button" onClick={profile}className="btn btn-warning btn-sm">Edit</button><button type="button" className="btn btn-danger btn-sm">Delete</button></td> 
           
         </tr>
       </thead>
@@ -33,4 +37,4 @@ function LinkApp(props) {
     );
 }
 
-export default LinkApp;
+export default Students;

@@ -13,7 +13,7 @@ const saltRounds = 10;
   
 /* GET links list. */
   router.get('/', async function(req, res, next) {
-  let cohort_name = req.query.user_id;
+  let cohort_name = req.query.cohort;
  console.log("here:",cohort_name)
   db (`SELECT * FROM students WHERE cohort_name = '${cohort_name}'`)
   .then(results => {
@@ -21,6 +21,16 @@ const saltRounds = 10;
   })
   .catch(err => res.status(500).send(err));
   });
+
+  router.get('/:student_id', async function(req, res, next) {
+    let student_id = req.query.user_id;
+   console.log("here:",student_id)
+    db (`SELECT * FROM students WHERE cohort_name = '${student_id}'`)
+    .then(results => {
+       res.send(results.data);
+    })
+    .catch(err => res.status(500).send(err));
+    });
 
   router.post("/", async function(req, res) {
     let { name, surname, cohort_name} = req.body;
@@ -41,13 +51,7 @@ const saltRounds = 10;
   }
  });
 
- router.get('/attendance', async function(req, res, next) {
 
-  db (`SELECT * FROM attendance`)
-  .then(results => {
-     res.send(results.data);
-  })
-  .catch(err => res.status(500).send(err));
-  });
+
 
  module.exports = router;

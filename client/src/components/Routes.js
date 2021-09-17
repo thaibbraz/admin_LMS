@@ -1,34 +1,33 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
-import LinkApp from '../views/LinkApp';
+import Students from '../views/Students';
+import StudentView from '../views/StudentView';
 import Activities from '../views/Activities';
 import Attendance from '../views/Attendance';
 import Login from '../views/Login';
 import AuthenticatedRoute from './AuthenticatedRoute';
+import NonAuthenticatedRoute from './NonAuthenticatedRoute';
 
 function Routes (props){
     return (
       <Switch>
-    <Route path="/" exact>
-      <LinkApp setFilteredStudents={props.setFilteredStudents} 
+    <AuthenticatedRoute path="/" exact>
+      <Students setFilteredStudents={props.setFilteredStudents} 
         filteredStudents={props.filteredStudents}/>
-    </Route>
+    </AuthenticatedRoute>
     <AuthenticatedRoute path="/activities">
       <Activities filteredStudents={props.filteredStudents} />
     </AuthenticatedRoute>
     <AuthenticatedRoute path="/attendance">
-      <Attendance postAttendance={props.postAttendance} filteredStudents={props.filteredStudents} />
+      <Attendance postAttendanceList={props.postAttendanceList} filteredStudents={props.filteredStudents} />
     </AuthenticatedRoute>
-    <Route path="/login">
-      <Login  loginCb={(u, p) => props.loginCb(u, p)} 
+    <NonAuthenticatedRoute path="/login" >
+      <Login loginCb={(u, p) => props.loginCb(u, p)} 
             loginError={props.loginError}  />
+    </NonAuthenticatedRoute>
+    <Route path="/students/:user_id">
+      <StudentView />
     </Route>
-    {/* <Route path="/users">
-      <UsersView userId={props.loggedIn.id}
-      getFilteredLinks={props.getFilteredLinks}
-      filteredLinks={props.filteredLinks}
-      setFilteredLinks={props.setFilteredLinks}/>
-    </Route> */}
     <AuthenticatedRoute path="/current/user">
     </AuthenticatedRoute>
 

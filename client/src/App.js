@@ -18,31 +18,39 @@ useEffect(() => {
   getFilteredStudents();
 }, [cohort])
 
-const postAttendance = (studentList) => {
-// let options = {
-//         method: "POST",
-//       }
-//       try {
-//         console.log(id)
-//         let response = await fetch(`/students/${id}`, options);
-//         if (response.ok) {
-//           let data = await response.json();
-          
-//         } else {
-//           console.log(`Server error: ${response.status} ${response.statusText}`);
-//         }
-//       } catch (err) {
-//         console.log(`Network error: ${err.message}`);
-//       }
+
+async function postAttendance(student) {
+    let options = {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body:JSON.stringify(student)
+    }
     
-}
+    try {      
+      let response = await fetch('/attendance',options);
+      if (response.ok){
+        let data = await response.json();
+        console.log(data)
+      } else{
+        console.log(`Server error: ${response.status} ${response.statusText}`)
+      }
+    }catch (err) {
+     console.log(`Network error: ${err.message}`);
+   }
+ };
+    
+ const postAttendanceList = (students) => {
+   console.log(students)
+  students.map(student => postAttendance(student))
+
+ }
 
   
 const getFilteredStudents = () => {
 
   let userId = cohort.name
   console.log(userId)
-  fetch(`/students?user_id=${userId}`)
+  fetch(`/students?cohort=${userId}`)
   .then(response => response.json())
   .then(links => {
     setFilteredStudents(links);
@@ -81,7 +89,7 @@ function doLogout() {
       filteredStudents={filteredStudents} 
       loginCb={(u, p) => doLogin(u, p)}
       loginError={loginErrorMsg} 
-      postAttendance={postAttendance}/>
+      postAttendanceList={postAttendanceList}/>
       
     </div>
   );

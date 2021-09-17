@@ -7,6 +7,7 @@ var logger = require('morgan');
 var linksRouter = require('./routes/links');
 var cohorts = require('./routes/cohorts');
 var students = require('./routes/students');
+var attendance = require('./routes/attendance');
 var authRouter = require('./routes/auth');
 var app = express();
 
@@ -20,7 +21,7 @@ app.use('/', authRouter);
 app.use('/links', linksRouter);
 app.use('/cohorts', cohorts);
 app.use('/students', students);
-
+app.use('/attendance', attendance);
 
 app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname + "/client/build/index.html"));

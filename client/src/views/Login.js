@@ -43,7 +43,7 @@ export default function Login(props) {
                 <div className="form-outline mb-4">
                 <input type="text" name="usernameInput" id="typeEmailX" required className="form-control form-control-lg" value={username} onChange={handleChange}/>
                 {/* <input className="email" id="typeEmailX" class="form-control form-control-lg" /> */}
-                <label className="form-label" for="typeEmailX">Email</label>
+                <label className="form-label" for="typeEmailX">Username</label>
                 </div>
 
                 <div className="form-outline mb-4">

@@ -7,7 +7,7 @@ const [date, setDate] = useState([])
 
 
 useEffect(() => {
-  const presentList =  props.filteredStudents.map(v => ({...v, attendant: false}))
+  const presentList =  props.filteredStudents.map(v => ({...v, present: false}))
   setStudents(presentList)
 }, [props.filteredStudents]);
 
@@ -15,11 +15,11 @@ const inputChangeDate = (event) => {
   setDate(event.target.value);
 }
 
-const inputChangePresent = (id) =>{
+const inputChangePresent = (id) => {
    
    let newStudentList = students.map(student => {
      if(student.id === id){
-      student.attendant = student.attendant === true ? false : true;
+      student.present = student.present === true ? false : true;
      }
      return student   
    })
@@ -27,7 +27,18 @@ const inputChangePresent = (id) =>{
 }
 
 function submit(){
-  props.postAttendance(students)
+
+  let presents = students.map((student) =>
+{
+   let newStudent = {
+      id_student: student.id,
+      date: date || "",
+      present : student.present
+    }
+    return newStudent
+})
+console.log(presents)
+props.postAttendanceList(presents)
 }
 
 //   useEffect(() => {
@@ -73,7 +84,7 @@ return (
           <td> {student.name}</td>
           {/* <td></td>*/}
           {/* {activities.map(a => <td>{}</td>)}    */}
-          <td><input name="present" checked={student.attendant} type="checkbox" onChange={ () => inputChangePresent(student.id)} /></td>  
+          <td><input name="present" checked={student.present} type="checkbox" onChange={ () => inputChangePresent(student.id)} /></td>  
         </tr>
       </thead>
         )}
@@ -82,7 +93,7 @@ return (
       <table className="table">
       <thead>
           <tr className="table">             
-          <th  scope="col">Date: <input onChange={(e) => inputChangeDate(e)} name="date" type="date"/></th>              
+          <th scope="col">Date: <input onChange={(e) => inputChangeDate(e)} name="date" type="date"/></th>              
           </tr>
       </thead>    
       </table>
