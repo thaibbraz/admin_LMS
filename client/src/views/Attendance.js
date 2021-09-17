@@ -2,9 +2,34 @@ import React, { useEffect, useState } from "react";
 import '../App.css';
 
 function Attendance(props) {
-const [attendance, setAttendance] = useState([
-  
-])
+const [students, setStudents] = useState([])
+const [date, setDate] = useState([])
+
+
+useEffect(() => {
+  const presentList =  props.filteredStudents.map(v => ({...v, attendant: false}))
+  setStudents(presentList)
+}, [props.filteredStudents]);
+
+const inputChangeDate = (event) => {
+  setDate(event.target.value);
+}
+
+const inputChangePresent = (id) =>{
+   
+   let newStudentList = students.map(student => {
+     if(student.id === id){
+      student.attendant = student.attendant === true ? false : true;
+     }
+     return student   
+   })
+   setStudents(newStudentList)  
+}
+
+function submit(){
+  props.postAttendance(students)
+}
+
 //   useEffect(() => {
 //     props.getFilteredLinks();
 //   }, [props.userId]);
@@ -27,6 +52,8 @@ const [attendance, setAttendance] = useState([
 //       console.log(`Network error: ${err.message}`);
 //     }
 //     }
+
+
 return (    
     <div className="container">
     <div className="table-responsive">
@@ -40,14 +67,13 @@ return (
             <th scope="col">Present</th>
           </tr>
       </thead> 
-      {props.filteredStudents && props.filteredStudents.map(filteredStudents =>
+      {students && students.map(student =>
       <thead>
         <tr className="table-light">           
-          <td> {filteredStudents.name}</td>
-          {/* <td></td> 
-          */}
+          <td> {student.name}</td>
+          {/* <td></td>*/}
           {/* {activities.map(a => <td>{}</td>)}    */}
-          <td><input type="checkbox"/></td>  
+          <td><input name="present" checked={student.attendant} type="checkbox" onChange={ () => inputChangePresent(student.id)} /></td>  
         </tr>
       </thead>
         )}
@@ -56,11 +82,11 @@ return (
       <table className="table">
       <thead>
           <tr className="table">             
-             <th scope="col">Date: <input type="date"/></th>         
+          <th  scope="col">Date: <input onChange={(e) => inputChangeDate(e)} name="date" type="date"/></th>              
           </tr>
       </thead>    
       </table>
-      <button type="button" className="btn btn-sm btn-primary">Submit</button>
+      <button type="button" className="btn btn-sm btn-primary" onClick={submit} >Submit</button>
       </div>
       </div>
 ); 

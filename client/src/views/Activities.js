@@ -24,7 +24,12 @@ const [activities, setActivities] = useState([
     "Milestone Four",
     " Vue",
     " React"
-])
+]);
+
+
+
+
+
 //   useEffect(() => {
 //     props.getFilteredLinks();
 //   }, [props.userId]);
@@ -64,8 +69,9 @@ return (
       <thead>
         <tr className="table-light">           
           <td> {filteredStudents.name}</td>
-          {activities.map(a => <td>{}</td>)}   
-          <td>{}</td>  
+          {activities.map(a => 
+          <td contenteditable='true'></td>)}   
+          <td contenteditable='true'></td>
           <td><button type="button" className="btn btn-success btn-sm">Export .csv</button></td> 
           
         </tr>

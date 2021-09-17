@@ -3,6 +3,8 @@ import { Route, Switch } from 'react-router-dom';
 import LinkApp from '../views/LinkApp';
 import Activities from '../views/Activities';
 import Attendance from '../views/Attendance';
+import Login from '../views/Login';
+import AuthenticatedRoute from './AuthenticatedRoute';
 
 function Routes (props){
     return (
@@ -11,11 +13,15 @@ function Routes (props){
       <LinkApp setFilteredStudents={props.setFilteredStudents} 
         filteredStudents={props.filteredStudents}/>
     </Route>
-    <Route path="/activities">
+    <AuthenticatedRoute path="/activities">
       <Activities filteredStudents={props.filteredStudents} />
-    </Route>
-    <Route path="/attendance">
-      <Attendance  filteredStudents={props.filteredStudents} />
+    </AuthenticatedRoute>
+    <AuthenticatedRoute path="/attendance">
+      <Attendance postAttendance={props.postAttendance} filteredStudents={props.filteredStudents} />
+    </AuthenticatedRoute>
+    <Route path="/login">
+      <Login  loginCb={(u, p) => props.loginCb(u, p)} 
+            loginError={props.loginError}  />
     </Route>
     {/* <Route path="/users">
       <UsersView userId={props.loggedIn.id}
@@ -23,8 +29,8 @@ function Routes (props){
       filteredLinks={props.filteredLinks}
       setFilteredLinks={props.setFilteredLinks}/>
     </Route> */}
-    <Route path="/current/user">
-    </Route>
+    <AuthenticatedRoute path="/current/user">
+    </AuthenticatedRoute>
 
     </Switch>
     )

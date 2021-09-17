@@ -7,7 +7,7 @@ var logger = require('morgan');
 var linksRouter = require('./routes/links');
 var cohorts = require('./routes/cohorts');
 var students = require('./routes/students');
-
+var authRouter = require('./routes/auth');
 var app = express();
 
 app.use(logger('dev'));
@@ -16,7 +16,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-
+app.use('/', authRouter); 
 app.use('/links', linksRouter);
 app.use('/cohorts', cohorts);
 app.use('/students', students);

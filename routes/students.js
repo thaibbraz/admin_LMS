@@ -41,4 +41,13 @@ const saltRounds = 10;
   }
  });
 
+ router.get('/attendance', async function(req, res, next) {
+
+  db (`SELECT * FROM attendance`)
+  .then(results => {
+     res.send(results.data);
+  })
+  .catch(err => res.status(500).send(err));
+  });
+
  module.exports = router;
