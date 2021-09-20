@@ -1,23 +1,58 @@
-<!-- Links app: app to store your favourite links, with a title and a description, ideally stored by categories.
+# Table of Contents
 
+- Architecture
+  - Backend
+  - DB design
+  - Frontend
+  - App flow (to-do)
+- Setup and getting started
+  - Install libraries and depedencies
 
-MUST HAVE FEATURES:
+## Backend
 
-1- User can store favourite links with a title, description and URL
-2- Display the full list of links
-3- When I click my link it should be opened in a new window
-4- Store links by category
-5- Edit Link
+- `routes` contains all routes using express for https requests GET, PUT, DELETE and POST.
 
+- `config`, contains config file, with the secret key and bcript for the authentication.
 
+- `model`, contains all table models for the project, including: _students, cohorts, attendance, assignments, student_assignments and users_. All these models are located in a sql script called init_db.sql which can be runned using the command: `yarn run migrate`
 
-Nice to have features:
-1- Login INFO
-2- Being able to do a search in order to find your desired link
+  - `seed.sql`, contains all seed files and it's another script with data examples to populate the DB. Can be runned using the command: `yarn run seed`
 
-Technologies:
-1- React (front)
-2- Express(back)
-3- MySQL (databases)
-4- HTML
-5- CSS  -->
+## DB design
+
+![alt text](support/DB_design.PNG)
+
+## Frontend
+
+- `components` blablablabl ablablablablab labl ablablablab lablablablablablablabla
+
+- `helpers`,blablablablablab lablablabla blablabla blabl ab labl ablabla blablabla
+
+- `views`, bla blablabl ablablabl ablablablabl ablabla blablabl ablab lab lablabla blablab la
+
+## Setup and getting started
+
+**Make sure** you create a database in MySQL that we will be using in this project. Steps to create a databse using MySQL:
+
+1.  Open your terminal and type the command:
+    `mysql -u root -p`
+2.  Type your password and hit `enter`
+3.  Type the SQL command: `CREATE database codeop;`
+
+Add your `.env` file inside the root of this project with the following data:
+
+```
+DB_HOST=localhost
+DB_USER=root
+DB_PASS=root
+DB_NAME=codeop
+```
+
+### Install libraries and depedencies
+
+- In the root of your app:
+  - `yarn && yarn start`
+  - `yarn run migrate`
+  - `yarn run seed`
+- Inside client:
+  - `yarn && yarn start`

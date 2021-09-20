@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import Api from '../helpers/Api';
+
 
 
 function StudentView(props) {
@@ -35,20 +35,6 @@ function StudentView(props) {
 
       };
       
-
-    // async function fetchProfile() {
-    //     console.log("USER ID",userId)
-    //     let response = await Api.getUser(1);
-    //     if (response.ok) {
-    //         setUser(response.data);
-    //         setErrorMsg('');
-    //     } else {
-    //         setUser(null);
-    //         setErrorMsg(response.error);
-    //     }
-    // }
-      
-
     if (errorMsg) {
         return <h2 style={{ color: 'red' }}>{errorMsg}</h2>
     }

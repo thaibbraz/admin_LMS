@@ -21,37 +21,12 @@ const [activities, setActivities] = useState([
     " trees",
     " graphs",
     " DOM",
-    "Milestone Four",
+    " Milestone Four",
     " Vue",
     " React"
 ]);
 
 
-
-
-
-//   useEffect(() => {
-//     props.getFilteredLinks();
-//   }, [props.userId]);
-  
-
-//   async function deleteLink(id) {
-//     let options = {
-//       method: "DELETE",
-//     }
-//     try {
-//       console.log(id)
-//       let response = await fetch(`/links/${id}`, options);
-//       if (response.ok) {
-//         let data = await response.json();
-//         props.setFilteredLinks(data);
-//       } else {
-//         console.log(`Server error: ${response.status} ${response.statusText}`);
-//       }
-//     } catch (err) {
-//       console.log(`Network error: ${err.message}`);
-//     }
-//     }
 return (    
     <div className="table-act">
     <div className="table-responsive">

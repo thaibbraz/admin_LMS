@@ -16,7 +16,7 @@ module.exports = async function db(query) {
       host: DB_HOST || "localhost",
       user: DB_USER || "root",
       password: DB_PASS|| "root",
-      database: DB_NAME || "todo",
+      database: DB_NAME || "codeop",
       multipleStatements: true
     });
 

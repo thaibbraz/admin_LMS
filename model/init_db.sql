@@ -12,8 +12,6 @@ email VARCHAR(40) NOT NULL,
 password VARCHAR(40) NOT NULL
 );
 
-
-
 DROP TABLE if exists students;
 CREATE TABLE students (
 id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -49,8 +47,3 @@ id_student INT NOT NULL,
 date DATE NOT NULL,
 present VARCHAR(5) NOT NULL,
 FOREIGN KEY (id_student) REFERENCES students(id));
-
-
-
-
-

@@ -89,8 +89,7 @@ function doLogout() {
       filteredStudents={filteredStudents} 
       loginCb={(u, p) => doLogin(u, p)}
       loginError={loginErrorMsg} 
-      postAttendanceList={postAttendanceList}/>
-      
+      postAttendanceList={postAttendanceList}/>      
     </div>
   );
 }

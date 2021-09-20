@@ -4,9 +4,7 @@ import Local from './Local';
 
 class Api {
 
-    /**
-    * Log in a user
-     */
+    /* Log in a user */
     
     static async loginUser(username, password) {
         // Prepare URL and options
@@ -34,9 +32,7 @@ class Api {
         return response;
     }
 
-    /**
-     * Get all users 
-     **/
+    /* Get all users */
 
     static async getUsers() {
         // Prepare URL and options
@@ -59,9 +55,7 @@ class Api {
         return response;
     }
 
-    /**
-     * Get data for user with ID 'userId'
-     */
+    /* Get data for user with ID 'userId' */
 
     static async getUser(userId) {
         // Prepare URL and options
