@@ -1,12 +1,15 @@
 # Table of Contents
 
-- Architecture
-  - Backend
-  - DB design
-  - Frontend
-  - App flow (to-do)
-- Setup and getting started
-  - Install libraries and depedencies
+- [Architecture](#Architeture)
+  - [Backend](#Backend)
+  - [DB design](#DB-design)
+  - [Frontend](#Frontend)
+  - App flow
+- [Setup](#Setup)
+- [Getting started](#Getting-started)
+  - [Install libraries and depedencies](#Install-libraries-and-depedencies)
+
+# Architeture
 
 ## Backend
 
@@ -30,7 +33,9 @@
 
 - `views`, bla blablabl ablablabl ablablablabl ablabla blablabl ablab lab lablabla blablab la
 
-## Setup and getting started
+# Setup
+
+## Getting started
 
 **Make sure** you create a database in MySQL that we will be using in this project. Steps to create a databse using MySQL:
 
