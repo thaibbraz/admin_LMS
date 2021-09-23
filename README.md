@@ -27,11 +27,11 @@
 
 ## Frontend
 
-- `components` blablablabl ablablablablab labl ablablablab lablablablablablablabla
+- `components` [to complete]
 
-- `helpers`,blablablablablab lablablabla blablabla blabl ab labl ablabla blablabla
+- `helpers` [to complete]
 
-- `views`, bla blablabl ablablabl ablablablabl ablabla blablabl ablab lab lablabla blablab la
+- `views` [to complete]
 
 # Setup
 
